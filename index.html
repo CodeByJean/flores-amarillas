@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Para Guisselle 💛 Flores Amarillas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- REPRODUCTOR DE AUDIO ORIGINAL: Floricienta - Flores Amarillas -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/flores-amarillas.mp3" type="audio/mpeg">
+  </audio>
+
+
+
+  <!-- PANTALLA INICIAL: Flor que invita a hacer clic -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="intro-content">
+      <div class="glow-effect"></div>
+      <div class="intro-badge">Un detalle especial para ti</div>
+      <div class="flower-btn-container" id="flower-btn">
+        <svg class="interactive-flower" viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="petal-grad" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#fff59d"/>
+              <stop offset="50%" stop-color="#ffd54f"/>
+              <stop offset="100%" stop-color="#f57f17"/>
+            </radialGradient>
+            <radialGradient id="center-grad" cx="45%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#ffb300"/>
+              <stop offset="60%" stop-color="#e65100"/>
+              <stop offset="100%" stop-color="#4e2600"/>
+            </radialGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#f57f17" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <g filter="url(#shadow)">
+            <g transform="translate(100,100)">
+              <!-- Capa posterior de petalos -->
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(15)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(45)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(75)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(105)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(135)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(165)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(195)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(225)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(255)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(285)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(315)" fill="url(#petal-grad)"/>
+              <path class="petal petal-back" d="M 0 0 C -18 -45 -15 -80 0 -95 C 15 -80 18 -45 0 0" transform="rotate(345)" fill="url(#petal-grad)"/>
+
+              <!-- Capa frontal de petalos -->
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(0)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(30)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(60)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(90)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(120)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(150)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(180)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(210)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(240)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(270)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(300)" fill="url(#petal-grad)"/>
+              <path class="petal" d="M 0 0 C -16 -40 -12 -75 0 -90 C 12 -75 16 -40 0 0" transform="rotate(330)" fill="url(#petal-grad)"/>
+
+              <circle cx="0" cy="0" r="26" fill="url(#center-grad)"/>
+              <circle cx="0" cy="0" r="22" fill="none" stroke="#ffe082" stroke-width="2" stroke-dasharray="3,3" opacity="0.8"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <p class="intro-hint">Toca la flor amarilla, Guisselle 💛</p>
+    </div>
+  </div>
+
+  <!-- ESCENA PRINCIPAL -->
+  <main id="main-scene" class="main-scene hidden">
+    <div class="floral-garland top-garland"></div>
+
+    <div class="stage-container">
+      <!-- Columna Izquierda: Mensaje y Contador -->
+      <section class="left-panel" id="letter-panel">
+        <div class="letter-card">
+          <div class="dedicated-to">Para Guisselle, mi amor 💛</div>
+          <h1 class="title">Flores Amarillas para el amor de mi vida:</h1>
+          
+          <div class="quote-box">
+            <p class="quote-line">Si pudiera elegir un lugar seguro, sería a tu lado.</p>
+            <p class="quote-line">Cuanto más tiempo estoy contigo más te amo.</p>
+            <p class="quote-wink">Sé que esto de las flores amarillas te parece un poco ridículo... pero no podía dejar pasar este 23 de septiembre sin darte un detalle hecho con lo que mejor sé hacer: programar algo especial para ti.</p>
+          </div>
+
+          <p class="signature">— ¡Te amo muchísimo! 💛</p>
+
+          <div class="card-separator">
+            <span class="line"></span>
+            <span class="mini-flower">🌻</span>
+            <span class="line"></span>
+          </div>
+
+          <!-- Contador de Tiempo -->
+          <div class="counter-section">
+            <p class="counter-label">Nuestra historia comenzó hace...</p>
+            <div class="counter-display" id="time-counter">
+              <span class="time-part"><strong id="days">0</strong> <span class="unit">días</span></span>
+              <span class="time-part"><strong id="hours">00</strong> <span class="unit">horas</span></span>
+              <span class="time-part"><strong id="minutes">00</strong> <span class="unit">minutos</span></span>
+              <span class="time-part"><strong id="seconds">00</strong> <span class="unit">segundos</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Columna Derecha: Canvas del Arbol -->
+      <section class="tree-panel">
+        <canvas id="treeCanvas"></canvas>
+      </section>
+    </div>
+
+    <div class="floral-garland bottom-garland"></div>
+
+    <!-- Control flotante de música y volumen -->
+    <div class="music-controller" id="music-controller">
+      <button id="music-toggle" class="music-btn" title="Pausar / Reproducir">
+        <span id="music-icon">🎵</span>
+      </button>
+      <div class="volume-slider-wrapper">
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" title="Controlar volumen">
+        <span id="volume-percent" class="volume-percent">40%</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

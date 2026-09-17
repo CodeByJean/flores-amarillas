@@ -1,0 +1,9 @@
+﻿# Música de Fondo
+
+Para colocar la canción original de **Floricienta — Flores Amarillas** (o la versión que más te guste):
+
+1. Descarga o copia tu archivo de audio MP3 en esta carpeta:
+   ssets/flores-amarillas.mp3
+
+2. ¡Listo! El reproductor web la detectará y reproducirá automáticamente al hacer clic en la flor.
+   Si no colocas el archivo todavía, el sistema cuenta con un sintetizador automático (Web Audio) con las notas melódicas de las flores amarillas.
