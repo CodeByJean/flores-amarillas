@@ -28,19 +28,69 @@ const volumeSlider = document.getElementById("volume-slider");
 const volumePercent = document.getElementById("volume-percent");
 
 // ============================================================================
-// 2. SISTEMA DE AUDIO (Canción Floricienta - Flores Amarillas Local MP3)
+// 2. SISTEMA DE AUDIO (Con GainNode de Web Audio para control universal en móviles)
 // ============================================================================
 let isMusicPlaying = false;
+let audioContext = null;
+let gainNode = null;
+let trackSource = null;
 
-// Configurar volumen suave por defecto (40%)
-if (bgMusic) {
-  bgMusic.volume = 0.4;
+function setupWebAudio() {
+  if (audioContext) return;
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContext();
+    gainNode = audioContext.createGain();
+
+    // Conectar el elemento <audio> al GainNode y a la salida de los altavoces
+    trackSource = audioContext.createMediaElementSource(bgMusic);
+    trackSource.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    // Configurar volumen inicial
+    const initVol = volumeSlider ? parseFloat(volumeSlider.value) : 0.4;
+    setVolumeLevel(initVol);
+  } catch (err) {
+    console.warn("Web Audio setup:", err);
+  }
+}
+
+function setVolumeLevel(val) {
+  // 1. Control directo en elemento de audio (PC / Android)
+  if (bgMusic) {
+    try { bgMusic.volume = val; } catch(e) {}
+  }
+
+  // 2. Control universal vía GainNode (funciona en iOS Safari y todos los móviles)
+  if (gainNode && audioContext) {
+    try {
+      gainNode.gain.setValueAtTime(val, audioContext.currentTime);
+    } catch(e) {}
+  }
+
+  // 3. Indicadores de UI
+  if (volumePercent) {
+    volumePercent.textContent = Math.round(val * 100) + "%";
+  }
+  if (val === 0) {
+    musicIcon.textContent = "🔇";
+  } else if (isMusicPlaying) {
+    musicIcon.textContent = "🔊";
+  }
 }
 
 function playAudioTrack() {
   if (!bgMusic) return;
+
+  setupWebAudio();
+  if (audioContext && audioContext.state === "suspended") {
+    audioContext.resume();
+  }
+
   bgMusic.currentTime = 0;
-  bgMusic.volume = volumeSlider ? parseFloat(volumeSlider.value) : 0.4;
+  const initVol = volumeSlider ? parseFloat(volumeSlider.value) : 0.4;
+  setVolumeLevel(initVol);
+
   const playPromise = bgMusic.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
@@ -59,6 +109,11 @@ function toggleMusic(e) {
     e.stopPropagation();
   }
   if (!bgMusic) return;
+
+  setupWebAudio();
+  if (audioContext && audioContext.state === "suspended") {
+    audioContext.resume();
+  }
 
   // Al presionar el botón, alternamos el despliegue del control de volumen
   if (musicController) {
@@ -87,17 +142,7 @@ document.addEventListener("touchstart", handleOutsideClick, { passive: true });
 if (volumeSlider) {
   const handleVolumeChange = (e) => {
     const val = parseFloat(e.target.value);
-    if (bgMusic) {
-      bgMusic.volume = val;
-    }
-    if (volumePercent) {
-      volumePercent.textContent = Math.round(val * 100) + "%";
-    }
-    if (val === 0) {
-      musicIcon.textContent = "🔇";
-    } else if (isMusicPlaying) {
-      musicIcon.textContent = "🔊";
-    }
+    setVolumeLevel(val);
   };
 
   volumeSlider.addEventListener("input", handleVolumeChange);
