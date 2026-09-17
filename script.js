@@ -55,32 +55,37 @@ function playAudioTrack() {
 const musicController = document.getElementById("music-controller");
 
 function toggleMusic(e) {
-  e.stopPropagation();
+  if (e) {
+    e.stopPropagation();
+  }
   if (!bgMusic) return;
 
-  // Al hacer clic en el botón, alternamos el despliegue del control de volumen
+  // Al presionar el botón, alternamos el despliegue del control de volumen
   if (musicController) {
     musicController.classList.toggle("open");
   }
 
   // Si la música estaba pausada, la reanudamos
   if (bgMusic.paused) {
-    bgMusic.play();
-    isMusicPlaying = true;
-    musicIcon.textContent = "🔊";
+    bgMusic.play().then(() => {
+      isMusicPlaying = true;
+      musicIcon.textContent = "🔊";
+    }).catch(() => {});
   }
 }
 
-// Cerrar el control de volumen si se hace clic afuera para no interferir con la lectura
-document.addEventListener("click", (e) => {
+// Cerrar el control de volumen si se hace clic/toque afuera para no interferir con la lectura
+function handleOutsideClick(e) {
   if (musicController && !musicController.contains(e.target)) {
     musicController.classList.remove("open");
   }
-});
+}
+document.addEventListener("click", handleOutsideClick);
+document.addEventListener("touchstart", handleOutsideClick, { passive: true });
 
 // Controlador interactivo de volumen
 if (volumeSlider) {
-  volumeSlider.addEventListener("input", (e) => {
+  const handleVolumeChange = (e) => {
     const val = parseFloat(e.target.value);
     if (bgMusic) {
       bgMusic.volume = val;
@@ -93,14 +98,26 @@ if (volumeSlider) {
     } else if (isMusicPlaying) {
       musicIcon.textContent = "🔊";
     }
-  });
+  };
 
-  volumeSlider.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+  volumeSlider.addEventListener("input", handleVolumeChange);
+  volumeSlider.addEventListener("change", handleVolumeChange);
+
+  // Prevenir que el toque en el slider cierre el panel en móviles
+  const stopPropagation = (e) => e.stopPropagation();
+  volumeSlider.addEventListener("click", stopPropagation);
+  volumeSlider.addEventListener("touchstart", stopPropagation, { passive: true });
+  volumeSlider.addEventListener("touchmove", stopPropagation, { passive: true });
+  volumeSlider.addEventListener("pointerdown", stopPropagation);
 }
 
-musicToggle.addEventListener("click", toggleMusic);
+if (musicToggle) {
+  musicToggle.addEventListener("click", toggleMusic);
+  musicToggle.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    toggleMusic(e);
+  });
+}
 
 // ============================================================================
 // 3. CONTADOR DE TIEMPO
