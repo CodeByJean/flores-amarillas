@@ -35,18 +35,30 @@ html, body {
   user-select: none;
 }
 
+body.lock-scroll {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* ==========================================================================
    PANTALLA DE INTRODUCCIÓN (BOTÓN FLOR)
    ========================================================================== */
 .intro-screen {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle at center, #fffde7 0%, #fff9c4 40%, #fcf8f2 100%);
   transition: opacity 1.2s ease, visibility 1.2s ease;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 .intro-screen.fade-out {
@@ -478,7 +490,7 @@ html, body {
    RESPONSIVIDAD (Móviles y Tablets)
    ========================================================================== */
 @media (max-width: 900px) {
-  html, body {
+  html, body:not(.lock-scroll) {
     overflow-y: auto;
     overflow-x: hidden;
     height: auto;

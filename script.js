@@ -233,7 +233,6 @@ class HeartFlower {
     this.size = 0;
     this.targetSize = targetSize;
     this.delay = delay;
-    this.age = 0;
     this.rotation = Math.random() * Math.PI * 2;
     this.rotationSpeed = (Math.random() - 0.5) * 0.02;
     const hues = ["#ffe082", "#ffd54f", "#ffca28", "#ffc107", "#ffb300", "#fff176"];
@@ -464,6 +463,7 @@ function startExperience(e) {
   mainScene.classList.remove("hidden");
 
   setTimeout(() => {
+    document.body.classList.remove("lock-scroll");
     resizeCanvas();
     setupTree();
     animationStage = "growing_trunk";

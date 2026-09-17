@@ -1,21 +1,17 @@
-# 🌻 Flores Amarillas — Para Guisselle 💛
+# 🌻 Flores Amarillas — Para Guisselle 💛
 
-> *"Si pudiera elegir un lugar seguro, sería a tu lado.*  
-> *Cuanto más tiempo estoy contigo más te amo.*  
-> *— ¡Te amo muchísimo! 💛"*
-
-Una experiencia web interactiva y romántica construida con **HTML5, CSS3, JavaScript puro (Canvas procedural) y Audio HTML5** para conmemorar el 23 de septiembre y nuestra historia que comenzó el **07 de Julio de 2026**.
+Una experiencia web interactiva y romántica construida con **HTML5, CSS3, JavaScript puro (Canvas procedural) y Audio HTML5** para conmemorar el **21 de septiembre** y nuestra historia que comenzó el **07 de Julio de 2026**.
 
 ---
 
 ## ✨ Características
 
 - 🌸 **Pantalla de Inicio Interactiva:** Flor amarilla con sutil animación de flotación que invita al toque inicial.
-- 🌳 **Árbol de Corazón Procedural (Canvas):** El tronco y ramas crecen orgánicamente para florecer con más de 600 flores amarillas distribuidas en forma de corazón matemático, con pétalos cayendo suavemente con el viento.
-- 💌 **Carta y Dedicatoria:** Mensaje personalizado adaptado para Guisselle.
+- 🌳 **Árbol de Corazón Procedural (Canvas):** El tronco y ramas crecen orgánicamente para florecer con más de 600 flores amarillas doradas distribuidas en forma de corazón paramétrico, con pétalos cayendo suavemente por el viento.
+- 💌 **Carta y Dedicatoria:** Palabras especiales y cómplices adaptadas para Guisselle.
 - ⏱️ **Contador en Tiempo Real:** Cálculo exacto en vivo de días, horas, minutos y segundos transcurridos de relación.
 - 🎵 **Música (Floricienta — Flores Amarillas):** Reproducción automática con volumen suave por defecto (40%) y cápsula de volumen plegable y no invasiva.
-- 📱 **Diseño 100% Responsivo:** Optimizado para pantallas móviles verticales de smartphones, tablets y computadoras.
+- 📱 **Diseño 100% Responsivo:** Optimizado tanto para celulares (pantallas verticales) como para tablets y computadoras.
 
 ---
 
